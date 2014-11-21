@@ -1,0 +1,27 @@
+{
+  "name": "qamoos",
+  "version": "0.0.1",
+  "description": "qamoos is a small dictionnary to manage internationalization of an application.",
+  "repository": {
+    "type": "git",
+    "url": "github.com/rouabhi/qamoos"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "languages",
+    "translation"
+  ],
+  "author": {
+    "name": "Samir ROUABHI",
+    "email": "rouabhi@gmail.com"
+  },
+  "license": "GNU GPL v2",
+  "readmeFilename": "README.md",
+  "dependencies": {
+  }
+}
