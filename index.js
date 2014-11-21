@@ -3,12 +3,9 @@
 
 module.exports = {define:addQamoos, get:getQamoos, lang:setLang}
 
-function varName( name ) {return ("qamoos_"+name).toLowerCase();}
-
 function addQamoos( name ){
-	var globalVar = varName(name);
-	if (typeof global[globalVar] == "undefined") {
-		global[globalVar]={
+	if (typeof global['qamoos'][name] == "undefined") {
+		global['qamoos'][name]={
 			type:'Qamoos',
 			data:{}
 		}
@@ -17,7 +14,7 @@ function addQamoos( name ){
 }
 
 function getQamoos(name){
-	var qamoos = global[ varName(name) ];
+	var qamoos = global['qamoos'][name];
 	if (!qamoos || qamoos.type != "Qamoos") return null;
 	return {set:setMsg.bind(qamoos), get:getMsg.bind(qamoos), getErr:getMsgAsErr.bind(qamoos)};
 }

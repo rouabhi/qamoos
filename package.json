@@ -1,6 +1,6 @@
 {
   "name": "qamoos",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "qamoos is a small dictionnary to manage internationalization of an application.",
   "repository": {
     "type": "git",
