@@ -1,6 +1,6 @@
 {
   "name": "qamoos",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "qamoos is a small dictionnary to manage internationalization of an application.",
   "repository": {
     "type": "git",
@@ -22,6 +22,14 @@
   },
   "license": "GNU GPL v2",
   "readmeFilename": "README.md",
-  "dependencies": {
-  }
+  "dependencies": {},
+  "readme": "# qamoos #\r\n\r\n**qamoos** is a multilingual index package for node.js.\r\n\r\n**qamoos** is a small dictionnary to manage internationalization of an application. You can define indexes of messages in different languages and access to them with a code.\r\n\r\n## How does it work ? ##\r\nYou should define different messages inside a **qamoos** defined by its name. Data is stored in a global variable so you can define it once in the project and use it while needed.\r\n\r\n**First define a qamoos ** (run this once in the project)\r\n```javascript\r\nvar Qamoos = require(\"qamoos\");\r\n\r\nvar myBook = Qamoos.define(\"myBook\");\r\n\r\nmyBook.set('run', {\"fr\":\"Serveur a l'ecoute du port \" , en:\"Server listening port \" });\r\nmyBook.set('name', {\"fr\":\"Nom de l'application\" , en:\"appName\" });\r\nmyBook.set('def', {\"fr\":\"defaut\" , \"en\":\"default\"});\r\n```\r\n\r\nNow, somewhere in your project, when you need a translation:\r\n```javascript\r\nvar Qamoos = require(\"qamoos\");\r\nvar myBook = Qamoos.define(\"myBook\");\r\n\r\nconsole.log(myBook.get('run'),81);\r\nQamoos.lang(\"fr\"); // define french as default language (english is the default value)\r\nconsole.log(myBook.get('run'),81);\r\n```\r\n\r\n## Error messages ##\r\nYou can also attribute a code to your messages and get the translation in the form of an error object:\r\n\r\n```javascript\r\nvar Qamoos = require(\"qamoos\");\r\nvar myBook = Qamoos.define(\"myBook\");\r\n\r\nmyBook.set('badLogin', {fr:\"Login incorrect\", en:\"Bad login\"},-101);\r\nmyBook.set('badPassword', {fr:\"Mot de passe incorrect\", en:\"Bad password\"},-102);\r\n\r\n\r\nconsole.log(myBook.getErr('badLogin'),81);\r\n```\r\n\r\nWill give you:\r\n```javascript\r\n{ err:-101, msg:'Bad login'}\r\n```\r\n",
+  "gitHead": "04800fe5dbb8ae85467a3fac0adcedddcb527190",
+  "bugs": {
+    "url": "https://github.com/rouabhi/qamoos/issues"
+  },
+  "homepage": "https://github.com/rouabhi/qamoos",
+  "_id": "qamoos@0.0.2",
+  "_shasum": "89a353643c840ff27df879d8d8fa55f0fb14061e",
+  "_from": "qamoos@*"
 }

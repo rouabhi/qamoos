@@ -1,22 +1,25 @@
 ﻿var supportedLang=["fr","en","ar"],
-	currentLang="en";
+	currentLang="en",
+	varServer = require("varserver")();
 
 module.exports = {define:addQamoos, get:getQamoos, lang:setLang}
 
 function addQamoos( name ){
-	if (typeof global['qamoos'][name] == "undefined") {
-		global['qamoos'][name]={
+	if (!global['qamoos']) global['qamoos']={};
+	var qamoos = varServer.get("Qamoos", {});
+	qamoos[name]={
 			type:'Qamoos',
 			data:{}
 		}
-	}
 	return getQamoos( name );
 }
 
+
 function getQamoos(name){
-	var qamoos = global['qamoos'][name];
-	if (!qamoos || qamoos.type != "Qamoos") return null;
-	return {set:setMsg.bind(qamoos), get:getMsg.bind(qamoos), getErr:getMsgAsErr.bind(qamoos)};
+	var qamoos = varServer.get("Qamoos",{});
+
+	if (!qamoos[name] || qamoos[name].type != "Qamoos") return null;
+	return {set:setMsg.bind(qamoos[name]), get:getMsg.bind(qamoos[name]), getErr:getMsgAsErr.bind(qamoos[name])};
 }
 
 function setMsg(index, translations, code){
@@ -42,12 +45,14 @@ function getMsg(index){
 }
 
 function getMsgAsErr(index){
-	var qamoos=this, entry=qamoos.data[index];
+	var qamoos=this, entry=qamoos.data[index],code;
 
 	if (!entry) return null;
-	if (entry[currentLang]) return {err:entry.code || -1, msg:entry[currentLang]};
-	for(var lang in entry) if (typeof entry[lang]=="string") return {err:entry.code || -1, msg:entry[lang]};
-	return {err:entry.code || -1, msg:""};
+	code=(typeof entry.code !== "undefined") ? entry.code:0;
+
+	if (entry[currentLang]) return {err: code, msg:entry[currentLang]};
+	for(var lang in entry) if (typeof entry[lang]=="string") return {err:code, msg:entry[lang]};
+	return {err:code, msg:""};
 }
 
 
