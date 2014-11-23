@@ -1,25 +1,25 @@
 ﻿var supportedLang=["fr","en","ar"],
-	currentLang="en",
-	varServer = require("varserver")();
+	currentLang="en";
 
 module.exports = {define:addQamoos, get:getQamoos, lang:setLang}
 
 function addQamoos( name ){
 	if (!global['qamoos']) global['qamoos']={};
-	var qamoos = varServer.get("Qamoos", {});
-	qamoos[name]={
+	if (typeof global['qamoos'][name] == "undefined") {
+		global['qamoos'][name]={
 			type:'Qamoos',
 			data:{}
 		}
+	}
 	return getQamoos( name );
 }
 
-
 function getQamoos(name){
-	var qamoos = varServer.get("Qamoos",{});
+	if (!global['qamoos']) global['qamoos']={};
 
-	if (!qamoos[name] || qamoos[name].type != "Qamoos") return null;
-	return {set:setMsg.bind(qamoos[name]), get:getMsg.bind(qamoos[name]), getErr:getMsgAsErr.bind(qamoos[name])};
+	var qamoos = global['qamoos'][name];
+	if (!qamoos) return null;
+	return {set:setMsg.bind(qamoos), get:getMsg.bind(qamoos), getErr:getMsgAsErr.bind(qamoos)};
 }
 
 function setMsg(index, translations, code){
