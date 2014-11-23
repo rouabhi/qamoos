@@ -1,5 +1,8 @@
 #Qamoos - What's new#
 
+##v 0.0.5##
+Dependency removal.
+
 ##v 0.0.4##
 Bug fixes.
 
