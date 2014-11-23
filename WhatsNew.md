@@ -1,5 +1,8 @@
 #Qamoos - What's new#
 
+##v 0.1.0##
+This is the first version with **qamoos** are stored as server variables (global) and language stored as a session variable (cookies).
+
 ##v 0.0.5##
 Dependency removal.
 

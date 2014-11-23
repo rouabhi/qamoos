@@ -28,8 +28,14 @@ Qamoos.lang("fr"); // define french as default language (english is the default 
 console.log(myBook.get('run'),81);
 ```
 
+## Data persistance ##
+ - The '**qamoos**' dictionnary is stored in a server variable, ie in global object, so that it can be accessible from any module.
+ - Language information is stored as a session variable ie as a cookie, so it could be changed for each session.
+
+You can create a **qamoos** for each module or application. The data is grouped as ONE global object in the server and shared by users and sessions.
+
 ## Error messages ##
-You can also attribute a code to your messages and get the translation in the form of an error object:
+You can attribute a code to your messages and get the translation in the form of an error object:
 
 ```javascript
 var Qamoos = require("qamoos");
