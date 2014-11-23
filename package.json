@@ -1,6 +1,6 @@
 {
   "name": "qamoos",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "qamoos is a small dictionnary to manage internationalization of an application.",
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "license": "GNU GPL v2",
   "readmeFilename": "README.md",
   "dependencies": {
+    "varsession":"*"
     },
   "bugs": {
     "url": "https://github.com/rouabhi/qamoos/issues"
