@@ -9,7 +9,7 @@ You should define different messages inside a **qamoos** defined by its name. Da
 
 **First define a qamoos ** (run this once in the project)
 ```javascript
-var Qamoos = require("qamoos");
+var Qamoos = require("qamoos")(req);
 
 var myBook = Qamoos.define("myBook");
 
@@ -20,7 +20,7 @@ myBook.set('def', {"fr":"defaut" , "en":"default"});
 
 Now, somewhere in your project, when you need a translation:
 ```javascript
-var Qamoos = require("qamoos");
+var Qamoos = require("qamoos")(req);
 var myBook = Qamoos.define("myBook");
 
 console.log(myBook.get('run'),81);
@@ -46,7 +46,7 @@ You can create a **qamoos** for each module or application. The data is grouped 
 You can attribute a code to your messages and get the translation in the form of an error object:
 
 ```javascript
-var Qamoos = require("qamoos");
+var Qamoos = require("qamoos")(req);
 var myBook = Qamoos.define("myBook");
 
 myBook.set('badLogin', {fr:"Login incorrect", en:"Bad login"},-101);
