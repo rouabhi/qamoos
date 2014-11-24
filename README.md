@@ -31,6 +31,7 @@ console.log(myBook.get('run'),81);
 ## Data persistence ##
  - A '**qamoos**' dictionnary is stored in a server variable (global object) so that it can be accessible from any module.
  - Language information is stored as a session variable (cookie), so it could be changed for each session. So, you should use "express-session" middleware to store session information in coockies:
+
 ```javacript
 var express = require('express');
 var app = express();
